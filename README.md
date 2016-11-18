@@ -32,7 +32,7 @@ Term: Fall 2016
 		
 	+ Make prediction using Multinomial Regression ／ Random Forest
 		1. Using Random Forest(lower error rate)
-		2. get final rank by converting word count(rf_test_prediction_rf(100 * 16 dim) %*% topic_dist(16 * 5000 dim)) to rank
+		2. get final rank by converting word count(rf_test_prediction_rf(100 * N_of_topic dim) %*% topic_dist(N_of_topic * 5000 dim)) to rank
 
 
 	
