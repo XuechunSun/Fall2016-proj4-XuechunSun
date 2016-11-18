@@ -8,11 +8,9 @@ dim(test_submission)
 View(test_submission)
 
 test_100_dir.h5 <- '/Users/sun93/Documents/ADS/pro4/TestSongFile100/'
-test_100_files.list <- as.matrix(list.files(test_100_dir.h5, recursive = TRUE))
-test_100_files.list <- test_100_files.list[-1,]
+test_100_files.list <- paste0("/Users/sun93/Documents/ADS/pro4/TestSongFile100/testsong",1:100)
+test_100_files.list <- paste0(test_100_files.list,".h5")
 length(test_100_files.list)
-
-test_100_files.list <- paste0(test_100_dir.h5,test_100_files.list)
 
 ############################
 # extract feature
