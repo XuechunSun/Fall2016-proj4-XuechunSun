@@ -12,12 +12,26 @@ Term: Fall 2016
 + Projec title:  Words for Music
 + Project summary: 
 	+ Clustering lyrics words using Topic Modeling
-	1. Generating words distribution for each topic.
-	2. Generate the topic of each word, given that word in a song
+		1. Generating words distribution for each topic.
+		2. Generate the topic of each word, given that word in a song
 	
 	+ Extract Features through “/analysis” files
-	
-	+ Make prediction using Multinomial regression
+		1. Variables Process through “/analysis” files 
+			1. bars_start (n1 dim vector): start time of each bar according to The Echo Nest
+			2. beats_start (n1 dim vector): start time of each beat according to The Echo Nest
+			3. sections_start (n2 dim vector): start time of each section according to The Echo Nest
+			4. segments_loudness_max (n3 dim vector): max loudness during each segment
+			5. segments_loudness_start (n3 dim vector): loudness at the beginning of each segment
+			6. segments_pitches (12 * n3 dim vector): chroma features for each segment
+			7. segments_timbre (12 * n3 dim vector): MFCC-like features for each segment
+			8. tatums_start(n4 dim vector): start time of each tatum according to The Echo Nest
+		2. For values in variables 1,2,3,8 in the previous slides, the number is actually increasing time points. Choose Summary statistics (quantiles), mean and SD for these variables for each song (7 dim vector for each variable)
+		3. For values in variables 4,5,6,7 in the previous slides, the number is time points in each small time segment. Get sample points equidistant from raw dataset, in other words, choosing sample data successively from the original data, where the interval of each two sampling data are the same. (get 20 intervals and 21 sample points for each variable
+)
+		4. original Feature Matrix: have Number_of_song * 573 dim
+		
+	+ Make prediction using Multinomial Regression ／ Random Forest
+		
 
 
 	
