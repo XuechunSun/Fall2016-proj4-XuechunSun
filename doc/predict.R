@@ -60,7 +60,6 @@ model.data <- cbind(Y,feature_50dim)
 str(model.data)
 dim(model.data)
 colnames(model.data)[1] <- "Y"
-View(model.data)
 unique(model.data[,1])
 model.data <- as.data.frame(model.data)
 model.data[,1] <- as.factor(as.character(model.data[,1]))
@@ -85,6 +84,8 @@ for (i in 1 : length(colnames(test_prediction))){
   prediction_word_rank_100[i,] <- fit$topics[test_prediction_index[i],]
 }
 #View(prediction_word_rank_100)
+View(prediction_word_rank_100)
+View(fit$topics)
 dim(test_prediction)
 dim(prediction_word_rank_100)
 test_word_modeling <- test_prediction %*% prediction_word_rank_100
@@ -130,7 +131,7 @@ str(model.data)
 library(randomForest)
 tuneRF(as.data.frame(feature_225dim),as.factor(as.character(Y)),
        stepFactor=1.5, improve=1e-5, ntree=1000)
-#mtry = 22 	OOB error = 70.67% 
+#mtry = 22 	OOB error = 64.53% 
 rf.model <- randomForest(Y ~., data = model.data, mtry = 22,stepFactor=1.5,ntree=1000,improve=1e-5 )
 
 #### Random Forest prediction
@@ -186,10 +187,17 @@ mean(error.rate)
 rank.100 <- matrix(NA, nrow = 100, ncol = dim(fit$topics)[2])
 colnames(rank.100) <- colnames(fit$topics)
 for (i in 1 : 100){
-  rank.100[i,] <- rank(-rf_test_word_modeling[i,], ties.method = "random")
+  rank.100[i,] <- rank(-rf_test_word_modeling[i,], ties.method = "min")
+}
+View(rank.100)
+
+evaluation <- matrix(NA, nrow = 100, ncol = 1)
+for (i in 1 : 100){
+  r_bar <- sum(rank.100[i,]) / 4973
+  evaluation[i,1] <-sum(rank.100[1,which(lyr.test[i,] > 0)]) / length(which(lyr.test[i,] > 0)) / r_bar
 }
 
-View(rank.100)
-view
-View(rf_test_word_modeling)
+
+mean(evaluation)
+
 
