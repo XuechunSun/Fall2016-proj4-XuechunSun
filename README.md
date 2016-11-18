@@ -31,7 +31,8 @@ Term: Fall 2016
 		4. original Feature Matrix: have Number_of_song * 573 dim
 		
 	+ Make prediction using Multinomial Regression ／ Random Forest
-		
+		1. Using Random Forest(lower error rate)
+		2. get final rank by converting word count(rf_test_prediction_rf(100*16 dim) %*% topic_dist(16*5000 dim)) to rank
 
 
 	
