@@ -160,14 +160,3 @@ save(test_submission, file = "submission_xs2254.Rdata")
 
 
 
-load("/Users/sun93/Desktop/test_prediction_result.Rdata.Rdata")
-View(test_prediction_result)
-
-a<- c(1,22,4,4,6,6,8,9,10)
-rank(a,ties.method= "min")
-
-getwd()
-dim(test_submission)
-dim(rank.100_rf)
-test_submission[1,5002]
-rank.100_rf[1,4973]
