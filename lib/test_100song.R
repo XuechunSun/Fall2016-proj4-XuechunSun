@@ -150,10 +150,10 @@ number_assignment <- matrix(4987, ncol = length(number_index), nrow = 100)
 test_submission[,(number_index + 2)] <- number_assignment
 test_submission[,(c(3,4,30:5000) +2)] <- rank.100_rf
 View(test_submission)
-write.csv(test_submission, file = "/Users/sun93/Documents/ADS/pro4/submission_xs2254.csv")
 
 setwd("/Users/sun93/Documents/ADS/pro4")
 getwd()
+write.csv(test_submission, file = "/Users/sun93/Documents/ADS/pro4/submission_xs2254.csv")
 save(test_submission, file = "submission_xs2254.Rdata")
 
 
