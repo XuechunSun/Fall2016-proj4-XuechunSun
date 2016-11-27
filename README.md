@@ -30,6 +30,8 @@ Term: Fall 2016
 )
 		4. original Feature Matrix: have Number_of_song * 573 dim
 		
+		5. Use PCA analysis to reduce dimension to 225 dim (explain around 80% variance)
+		
 	+ Make prediction using Multinomial Regression ／ Random Forest
 		1. Using Random Forest(lower error rate)
 		2. get final rank by converting word count(rf_test_prediction_rf(100 * N_of_topic dim) %*% topic_dist(N_of_topic * 5000 dim)) to rank
